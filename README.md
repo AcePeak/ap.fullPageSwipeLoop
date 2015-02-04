@@ -1,6 +1,6 @@
 # ap.fullPageSwipeLoop.js
 
-Based on [fullPage]((http://alvarotrigo.com/fullPage/)) but make it swipes more smooth and loop-able.
+Based on [fullPage](http://alvarotrigo.com/fullPage/) but make it swipes more smooth and loop-able.
 
 ## Usage
 As you can see the swipeloop.html file in the example files, you will need to include:

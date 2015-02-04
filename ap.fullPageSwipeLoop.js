@@ -31,7 +31,7 @@
 			'loopTop': false,
 			'loopHorizontal': true,
 			'continuousVertical': false,
-			'continuousVerticalLoop': false,				//newly option from ap
+			'continuousHorizontal': false,				//newly option from ap
 			'normalScrollElements': null,
 			'scrollOverflow': false,
 			'touchSensitivity': 5,
@@ -836,7 +836,7 @@
 		    var currentSlide = slides.find('.fp-slide.active');
 		    var destiny = null;
 
-			if(options.continuousVerticalLoop)
+			if(options.continuousHorizontal)
 			{
 				var allSlides = slides.find('.fp-slide');
 				var cIndex = currentSlide.index();
@@ -1174,7 +1174,7 @@
 			e.preventDefault();
 			var slides = $(this).closest('.fp-section').find('.fp-slides');
 			var index = $(this).closest('li').index();
-			var realIndex = options.continuousVerticalLoop ? index + 1 : index;
+			var realIndex = options.continuousHorizontal ? index + 1 : index;
 			var destiny = slides.find('.fp-slide').eq(realIndex);
 
 			landscapeScroll(slides, destiny);
@@ -1234,6 +1234,11 @@
 
 			if(typeof slideAnchor === 'undefined'){
 				slideAnchor = slideIndex;
+				if(options.continuousHorizontal)
+				{
+					var secSlides = section.find('.fp-slide');
+					slideAnchor = (slideAnchor - 1) % (secSlides.length - 2) + 1;
+				}
 			}
 
 			if(!options.loopHorizontal && options.controlArrows){
@@ -1277,7 +1282,7 @@
 
 			slidesNav.find('.active').removeClass('active');
 			var showingIndex = slideIndex;
-			if(options.continuousVerticalLoop)
+			if(options.continuousHorizontal)
 			{
 				var secSlides = section.find('.fp-slide');
 				showingIndex = slideIndex - 1;
@@ -1628,7 +1633,7 @@
 			//top or bottom
 			nav.addClass(options.slidesNavPosition);
 
-			var maxSlides = options.continuousVerticalLoop ? numSlides - 2 : numSlides;
+			var maxSlides = options.continuousHorizontal ? numSlides - 2 : numSlides;
 			for(var i=0; i< maxSlides; i++){
 				nav.find('ul').append('<li><a href="#"><span></span></a></li>');
 			}
