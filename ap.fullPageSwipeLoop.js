@@ -209,7 +209,7 @@
 			var destiny = '';
 
 			if(isNaN(section)){
-				destiny = $('[data-anchor="'+section+'"]');
+				destiny = $('.fp-section[data-anchor="'+section+'"]');
 			}else{
 				destiny = $('.fp-section').eq( (section -1) );
 			}
@@ -448,7 +448,7 @@
 			var destiny = value[0];
 
 			if(destiny.length){
-				var section = $('[data-anchor="'+destiny+'"]');
+				var section = $('.fp-section[data-anchor="'+destiny+'"]');
 
 				if(!options.animateAnchor && section.length){
 
@@ -1563,11 +1563,11 @@
 			var section;
 
 			if (typeof slide === 'undefined') {
-			    slide = 0;
+			    slide = options.continuousHorizontal ? 1 : 0;
 			}
 
 			if(isNaN(destiny)){
-				section = $('[data-anchor="'+destiny+'"]');
+				section = $('.fp-section[data-anchor="'+destiny+'"]');
 			}else{
 				section = $('.fp-section').eq( (destiny -1) );
 			}
@@ -1611,7 +1611,7 @@
 		function scrollSlider(section, slide){
 			if(typeof slide != 'undefined'){
 				var slides = section.find('.fp-slides');
-				var destiny =  slides.find('[data-anchor="'+slide+'"]');
+				var destiny =  slides.find('.fp-slide[data-anchor="'+slide+'"]');
 
 				if(!destiny.length){
 					destiny = slides.find('.fp-slide').eq(slide);
@@ -1655,7 +1655,7 @@
 			if(options.anchors.length){
 
 				//isn't it the first slide?
-				if(slideIndex){
+				if((options.continuousHorizontal && slideIndex > 1) || (!options.continuousHorizontal && slideIndex > 0)){
 					if(typeof anchorLink !== 'undefined'){
 						sectionHash = anchorLink;
 					}
