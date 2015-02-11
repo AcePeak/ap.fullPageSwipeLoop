@@ -46,7 +46,7 @@ $(document).ready(function() {
 		loopBottom: false,
 		loopTop: false,
 		loopHorizontal: true,
-		loopHorizontalSwipe: false, 				//this is newly added for swipe loop
+		continuousHorizontal: false, 				//this is newly added for swipe loop
 		continuousVertical: false,
 		normalScrollElements: '#element1, .element2',
 		scrollOverflow: false,
